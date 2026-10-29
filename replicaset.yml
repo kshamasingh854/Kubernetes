@@ -30,10 +30,10 @@ spec:
 #kubectl apply -f replicaset.yml
 # kubectl get rs
 #kubectl get pods
+#kubectl describe rs (rs name)
 #kubectl scale --replicas=1 rs/myrs  (rs name)
 # kubectl delete pod myrs (Pod name)
-#kubectl get rs
-#kubectl get pods (will show all)
+ #kubectl get pods (will show all)
 
 
 
