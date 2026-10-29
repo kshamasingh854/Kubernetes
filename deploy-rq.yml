@@ -1,0 +1,34 @@
+# testing for limit and resource request
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: Kshama
+  template:
+    metadata:
+      labels:
+        name: Kshama
+    spec:
+      containers:
+        - name: c1
+          image: ubuntu
+          command: ["/bin/bash", "-c", "while true; do echo ksham; sleep 5; done"]
+          resources:
+            requests:
+              cpu: "200m"
+
+:wq
+
+kubectl apply -f resource.yml
+kubectl get deploy
+kubectl get pods   (will not create becouce apne limit qauta apki 400m apne 3 cont. each200m ki hai jo hi limit hi nhi hai will not create then)
+
+kubectl get rs
+kubectl describe rs <rs_name>
+kubectl delete -f resource.yml
+kubectl delete -f resource.quata
