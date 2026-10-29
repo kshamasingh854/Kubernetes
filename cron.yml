@@ -1,0 +1,27 @@
+
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: bhupi
+spec:
+  schedule: "* * * * *"   #(will create every minute one container)
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: c1
+              image: ubuntu
+              command: ["/bin/bash", "-c", "echo Bhupi; date"]
+          restartPolicy: Never
+:wq
+
+
+Important: A CronJob does not create a container directly. It creates a Job, which then creates a Pod that runs the container.
+The example command prints Bhupi and the date, then exits successfully.
+
+kubectl apply -f cron.yml
+kubectl get cronjobs
+kubectl get jobs
+kubectl get pods
+
