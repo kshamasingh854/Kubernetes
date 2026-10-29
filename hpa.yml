@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: kshama
+  template:
+    metadata:
+      labels:
+        name: kshama
+    spec:
+      containers:
+        - name: c1
+          image: ubuntu
+          command: ["/bin/bash", "-c", "while true; do echo kshama; sleep 5; done"]
+          resources:
+            requests:
+              cpu: 200m
+              memory: 200Mi
+            limits:
+              cpu: 500m
+              memory: 500Mi
+:wq
+
+
+kubectl apply -f hpa.yml
+kubectl get all 
+kubectl autoscale deployment mydp <dep._name> --cpu-percent=20 --min=1 --max=10
+kubectl get all
+kubectl edit resourcequota test
+kubectl get resourcequota
+kubectl get hpa
+kubectl get pods -w (live pod)
+kubectl get limitrange
