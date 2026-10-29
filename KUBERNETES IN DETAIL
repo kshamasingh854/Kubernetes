@@ -1,5 +1,37 @@
-*KUBERNETES IN DETAIL:--
+ WHAT IS KUBERNETS:--
 
+*COMPLETE THEORY OF KUBERNETES (K8S):--  (container management tool)
+*MONOLITHIC SERVICE (OLD SOFTWARE METHOD)
+*MICROSERVICES (NOW WE USE THIS METHODE )
+API GATEWAY( COMUNICATE WITBEEN TWO DIFFENET SERVICE)
+ 
+
+*KUBERNET is an open source container management tool which automates container deployment, container scaling & load balancing,
+
+*It schedules , runs and manages isolated containers which are running  on virtual/physical/cloud machines 
+*All to cloud provides support Kubernetes
+
+        [HISTORY]
+
+*Google developed  an internal system called 'borg' (later named as omega to deploy and manage thousand google application and services on their cluster.
+
+*cluster (it means group) (like group of contaier group of nodes) 
+*In 2014, google introduced kubernetes on open source platform written in Go language and later donated to CNCF (cloud native computing foundation).
+
+* ONLINE PLATFORM FOR K8S :-- (for learning)
+
+- Kubernetes playground
+- play with k8s
+- Play with kubernetes classroom
+
+*CLOUD BASED KUBERNETES SERVICES:--
+*GKE - google kubernetes services
+-AKS - Azure kubernets services
+*AMAZONE EKS (Elastic kubernetes services)
+
+*KUBERNETES INSTALLATION TOOL:--
+*Minikube
+*Kubadm
 *Kubernetes uses objects to represent the state of your cluster.
 *what containerized application are running (and on which node)
 
@@ -7,13 +39,10 @@
 *Once you create the object, the Kubernetes system will constantly work to ensure that object erist and 
 maintains cluster's desired state.
 
-*Every Kubernetes object include two nested field that govern the object config the object
-spec. and the object status.
+Every Kubernetes object includes two nested fields that govern the object's configuration: spec and status
 
 *The specification, which we provide describes your desired state for the object-the characteristics that you want the object to have.
-
 *The status describes the actual state of the object and is supplied and updated by the Kubernetes system
-
 *All objects are identified by a unique name and a UID.
 
 *The Basic Kubernetes objects include.
@@ -61,15 +90,12 @@ spec. and the object status.
 *imperative- explicitly tells "how to accomplish it.
 
 *Fundamental of pods:--
-
 *When a pod gets created, it is scheduled to run on a node in your cluster.
-
 *The pod remains on that node until the process is terminated, the pod object is deleted , the ppod is evicted
 for lock of resources or the node foils.
 
 *if a pod is scheduled to a node that fails or , if the scheduling operation itself fails , the pod is 
  deleted.
-
 *A given pod (UID) is not "rescheduled" to a new node, instead it will be replaces by an identical pod
 with even the same name if desired, but with a new UID.
 
