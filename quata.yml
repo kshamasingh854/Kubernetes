@@ -1,0 +1,24 @@
+
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: myquota
+spec:
+  hard:
+    limits.cpu: "400m"
+    limits.memory: "400Mi"
+    requests.cpu: "200m"
+    requests.memory: "200Mi"
+:wq
+
+kubectl apply -f quota.yml
+kubectl get resourcequota
+kubectl describe resourcequota tmyquota
+kubectl edit resourcequota myquota
+
+
+
+*RESOURCE QUATA:--
+*A Kubernetes cluster can be divided into namespace. If a container is created in a namespace that a default CPU limit, and the container does not specify 
+it's our CPU limit, then the container is assigned the default CPU limit.
+
