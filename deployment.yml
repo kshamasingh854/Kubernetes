@@ -1,3 +1,4 @@
+# deployment use with PVC
 
 apiVersion: apps/v1
 kind: Deployment
