@@ -1,0 +1,185 @@
+         *HELM COMMANDS AND CONCEPTS:--
+
+helm repo:-- Internet with chart Repository helm-3 no longer ships with a default chart repository.
+
+Commands:-
+#helm repo list
+#helm repo add <name><url>
+#helm repo remove <name>
+#helm search : For finding charts for eg- helm search repo <chart>
+#helm show: Information about a chart 
+For eg- helm show <value| chart|readme|all<chartName>
+
+#helm install : Install a package.
+For eg- helm install < Release name> <chart Name>
+
+#Wait ubtill all subject are ready 
+For eg ' helm install mychart 
+stable/tomacat --wait --timeout 10S(Second)
+
+#helm create : create a new chart with given name
+For eg - helm create helloworld.
+
+install helm
+#curl -faSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+#chmod 777 helm.sh
+#./get_helm.sh Downloading https://get.helm.sh/helm-v3.8.0-linu-amd64.tar.gz
+#which helm
+#helm version
+#helm list 
+#helm repo add stable https://charts.helm.sh/stable
+#helm list
+#helm repo
+#helm repo list
+#helm repo remove stable<repo Name>
+#helm repo list
+Add again
+#helm repo add stable https://charts.helm.sh/stable
+#helm repo list
+#helm search repo Jenkins
+#helm search repo tomcat
+#helm search repo apache
+#helm show values <valueName>stable/tomcat
+#helm show chart stable/tomcat
+#helm show all stable/tomcat
+#apt install tree
+#helm create chart helloworld
+#ls
+#tree
+#cd helloworld
+#ls
+#vim values.yml
+#cd ..
+ls
+#rm -rf helloworld
+#helm get all
+#helm install testjenkins stable/Jenkins (install form stable/Jenkins)
+#helm install testjenkins2 stable/Jenkins (will create revision number change)
+#helm install test tomcat stable/tomcat (release name)
+#kubectl get all
+#helm delete test/Jenkins <release name>
+#kubectl get all
+#helm delete test/jenkins2
+#kubectl get all 
+#helm list
+#helm install --dry-run  testchart stable/tomcat        (using dry-run will show only output but will not anything excute/install)
+#helm delete testtomcat2
+#kubectl get all 
+#helm list
+#helm install --wait --timeout 20s testtomcat <relaesae name> stable/tomacta <chartName>
+#kubectl get all
+#helm list
+# helm delete testtomcat
+#helm list
+#helm install testtomcat stable/tomcat 
+#helm list
+#kubectl get all
+#helm install testchart stable/tomcat --version 0.4.0
+#helm list
+
+*Helm Commands:--
+
+There are two ways to pass Configuration data during install
+--set: Specify Override on the command line
+
+--values: specify a YAML file with Overrides
+(or-f)
+For eg:- helm install mychart stable/tomcat --set service type=Nodeport
+
+helm install testchart stable/Jenkins --set master servicetype=NodePort
+
+'helm get': Information about from a normal Release
+
+helm get <all|menifest|values> <release_name>
+For eg:- helm get all mychart
+s
+#helm list - list all the Named Releases
+#helm status :- Display the status of the Nmaed Release
+
+#helm status <ReleaseNmae>
+eg:- helm status mychart
+
+------
+#helm list
+#helm install testchart stable/tomcat
+#kubectl get all
+#helm delete testchart
+#helm show values stable/tomcat
+#helm install testchart2 stable/tomcat --set service.type=NodePort
+#kubectl get all
+helm get values testchart2
+#helm get manifest testchart2
+#helm status testchart2
+#
+#
+
+*helm history:- Fetch Release history helm history <ReleaseName>
+#helm delete :- uninstall the deployment Release
+#helm upgrade:- "upgrade a RElEse"
+helm upgrade <ReleaseName> <chartName>
+
+For eg:- helm upgrade mychart stable/tomcat
+#helm rollback : Rollback a Release to ant=yprevious version.
+#Helm rollback <ReleaseName> <revision>
+Fopr eg:- helm rollback mychart
+
+---
+#helm history testchart2
+#helm delete testchart2
+#helm install testchart satble/tomcat --version 0.4.0 (old version)
+#helm list
+#helm history testchart
+#helm upgrade testchart stable/tomcat
+#helm history testchart
+#kubectl get all
+#helm rollback testchart 
+#helm history tsetchart
+
+#helm pull: Download a chart from a Repository
+#helm pull <chartName> #Download the chart
+#helm pull --untar <chartName> #download & untar
+eg:- helm pull --untar stable/tomcat
+
+#install from a local chart archive 
+eg:- helm install mychart tomcat-0.4.3.tgz
+
+*install from an unpacked chart directory
+For eg:- helm install mychart
+
+*install from a full URL
+eg:- helm isnatll mychart <url>
+
+
+---
+#mkdir charts       (helm hub - artifact hub.io/ is there will show all pacakges) 
+ls
+#helm repo add bitnami https://charts.bintanami.com/bitnami
+#helm install my-release bitnami/MySQL
+#helm list 
+#helm history my-release
+#helm delete my-release
+#helm install my-relaese2 btinami/mysql --version 8.8.21
+#helm history my-release2
+#ls
+#helm pull stable/tomcat
+#helm pull stable/tomcat --untar
+#cd tomcat #cd
+#tree
+#cd tamplates
+ls #vim Chart.yml
+#helm install new-release . 
+#helm list
+#
+
+
+
+
+ 
+
+
+
+
+
+
+
+
