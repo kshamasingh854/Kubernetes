@@ -1,0 +1,38 @@
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: myjob
+spec:
+  template:
+    spec:
+      containers:
+        - name: c1
+          image: ubuntu
+          command: ["/bin/bash", "-c", "echo Kshama; sleep 5"]
+      restartPolicy: Never
+:wq
+
+kubectl apply -f job.yml
+kubectl get jobs
+kubectl get pods
+kubectl logs job/myjob
+
+  
+
+* (Job does not get deleted by itself, we have to delete it
+kubectl get pods
+ubectl delete -f test <yml file>
+*USING JOB WE CAN DO PERLALY CREATE POD AND DELETE:-
+
+    JOBS:--
+We have replicasetes, Daemansets, statefulsets and deployment they all share one common property; they ensure that this pods are always running . 
+If a pod fails, the controller restarts it or reschedules it to another node to make sure the application the pods is hosting keeps running.
+
+
+    USE CASES:--
+1)Take Backup of a DB 
+2) Helm charts Batch processes
+3) Run a task at an schedule interval 
+4) Running Batch
+
