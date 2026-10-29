@@ -1,0 +1,35 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeployment
+spec:
+  replicas: 2
+  selector: # Tells the controller which Pods to manage
+    matchLabels:
+      name: deployment
+  template:
+    metadata:
+      labels:
+        name: deployment
+    spec:
+      containers:
+        - name: c1
+          image: ubuntu
+          command: ["/bin/bash", "-c", "while true; do echo Kshama singh; sleep 5; done"]
+:wq
+
+#kubectl apply -f deployment.yml
+#kubectl get deployments
+#kubectl get pods
+#kubectl get pods -o wide
+#kubectl describe deployment
+#kubectl scale --replicase=1 deploy mydeployment (node name)
+*To check , what is running inside container
+#kubectl logs -f <pod anme.
+#kubectl rollout status deployment <pod name> mydeployment
+#kubectl rollout history deployment <pod name>mydeployment
+#kubectl rollout undo deploy/mydeploymet <pod name>
+
+
+
