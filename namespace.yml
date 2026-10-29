@@ -1,0 +1,21 @@
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+  labels:
+    name: dev
+
+  
+:wq
+
+kubectl apply -f namespace.yml
+kubectl get namespaces
+kubectl describe namespace dev
+
+*Namesapce are intended for use in envirments with many users spend across multiple teams, or project for cluster with a few to ters of users, you should not need to create or think about namespace and all.
+*Let us assume we have shared K&S cluster for Dev and production use cases.
+* The development team would like to maintain a space in the cluster when they can get a view on the list of pods, services and Devlopment they use to build and run their application In, this , no restrictions are put on who can or cannot modify resoureces to enable agile development.
+*For Production team we can enforce strict procedure on who can or can not manipulate the set of pods services and deployment
+cmd:-- kubectl get namespaces
+
