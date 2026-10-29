@@ -1,0 +1,78 @@
+*KUBERNETES IN DETAIL:--
+
+*Kubernetes uses objects to represent the state of your cluster.
+*what containerized application are running (and on which node)
+
+*The policies around how those applications behave, such as restart policies, upgrades and fault tolerance.
+*Once you create the object, the Kubernetes system will constantly work to ensure that object erist and 
+maintains cluster's desired state.
+
+*Every Kubernetes object include two nested field that govern the object config the object
+spec. and the object status.
+
+*The specification, which we provide describes your desired state for the object-the characteristics that you want the object to have.
+
+*The status describes the actual state of the object and is supplied and updated by the Kubernetes system
+
+*All objects are identified by a unique name and a UID.
+
+*The Basic Kubernetes objects include.
+1) POD
+2)Service 
+3)volume
+4)Namespace 
+5)Replicasets
+6)Screts
+7)ConfigMaps
+8) DEployments
+9)Jobs
+10)Daemonsets
+
+*KUBERNETES OBJECT:--
+*It represnts as JSON or YAML files. s
+*You create these and then push them to the Kubernetes API with kubectl.
+
+*STATE OF THE OBJECT:--
+*Replicas (2/2)
+*Image (Tomcat/ubuntu)
+*Name
+*Port
+*Volume
+*Startup
+*Detached(default)
+
+
+*Relationship b/w these object:--
+*Pod manages containers
+*Replicaset Manage pods
+*Services expose pod processes to the outside world
+*Configmaps and secrets helps you configure pods.
+
+*Kubernetes objects Management
+*The kubectl command line tool supports several different ways to create and manage kubernetes object.
+
+*MANAGEMENT TECHNIQUE             OPERATES ON 					RECOMMENDED ENVIRMANT
+1)Imperative commands 		1)Live objects					1)Development Project
+2) Declarative object           2)Individual files                                2)     Production
+    configuration 	         (yml/json)  
+
+*Declarative is about describing what you are trying achieve, without instruction how to do it 
+
+*imperative- explicitly tells "how to accomplish it.
+
+*Fundamental of pods:--
+
+*When a pod gets created, it is scheduled to run on a node in your cluster.
+
+*The pod remains on that node until the process is terminated, the pod object is deleted , the ppod is evicted
+for lock of resources or the node foils.
+
+*if a pod is scheduled to a node that fails or , if the scheduling operation itself fails , the pod is 
+ deleted.
+
+*A given pod (UID) is not "rescheduled" to a new node, instead it will be replaces by an identical pod
+with even the same name if desired, but with a new UID.
+
+*Volume in a POD will exists as long as that POD (with that UID) exist if that  POD is deleted for any reason, volume is also destroyed and created as new on new pod.
+
+* A controller can create and manage multiple pods handling replication, rollout and providing self-healing capacities
