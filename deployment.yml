@@ -23,7 +23,7 @@ spec:
       volumes:
         - name: mypd
           persistentVolumeClaim:
-            claimName: pvc
+            claimName: mypvc
 
 :wq
 
