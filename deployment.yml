@@ -32,3 +32,4 @@ spec:
 #kubectl get deployments
 #kubectl get pods
 #kubectl describe deployment mydp
+#kubectl delete -f deployment.yml
