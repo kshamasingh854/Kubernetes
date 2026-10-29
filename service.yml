@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service  # Define to create service type object
+metadata:
+   name: mysr
+
+spec:
+  type: ClusterIp       #Specifics the service type i.e clusterIp or NodePort
+  ports:
+   - port: 80        #Containers port exposed
+     targetPort: 80   # pods port
+  selector:
+     name: kshama_singh     #Apply this services to any pods which has the specific label
+   
+:wq
+
+#kubectl apply -f serice.yml
+#kubectl get svc
+#curl  <cluster staticIP>:80
+#kubectl get pods
+#kubectl delete pods <pod_name>
+#kubectl get pods
+#kubectl get svc
+#curl  <cluster staticIP>:80   (after deleted pods will communicate with pods with same cluster static ip)
+#kubectl exec -it deploy-6c48c9c6d7-jnsmc -- curl 10.103.58.131:80
+#kubectl delete svc <serice_name>
+#kubectl delete -f service.yml
+#kubectl get pods
