@@ -1,0 +1,29 @@
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: testpod
+spec:
+  parallelism: 5
+  activeDeadlineSeconds: 10
+  template:
+    metadata:
+      labels:
+        app: testpod
+    spec:
+      containers:
+        - name: c1
+          image: ubuntu
+          command: ["/bin/bash", "-c", "while true; do echo singh; sleep 5; done"]
+      restartPolicy: Never
+:wq
+
+kubectl apply -f parallel.yml
+kubectl get jobs
+kubectl get pods
+kubectl describe job testpod
+kubectl get job testpod -o wide
+
+* Job = run tasks to completion; Deployment = keep applications running.
+
+
