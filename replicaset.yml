@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myrs
+spec:
+  replicas: 4
+  selector:
+    matchExpressions:
+      - {key: name, ane, operator: In, values: [kshama_singh_rajput, singh,]}
+      - {key: ksh, kshsingh, operator: NotIn, values: [name, kshsingh]}
+  template:
+    metadata:
+      name: test_pod
+      labels:
+        name: kshama_singh_rajput
+    spec:
+      containers:
+        - name: c1
+          image: ubuntu
+          command: ["/bin/bash", "-c", "while true; do echo $name; sleep 5; done"]
+          env:
+            - name: name
+              value: singh
+        - name: c2
+          image: httpd
+          ports:
+            - containerPort: 80
+:wq
+
+#kubectl apply -f replicaset.yml
+# kubectl get rs
+#kubectl get pods
+#kubectl scale --replicas=1 rs/myrs  (rs name)
+# kubectl delete pod myrs (Pod name)
+#kubectl get rs
+#kubectl get pods (will show all)
+
+
+
+
+
+
