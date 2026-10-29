@@ -1,0 +1,42 @@
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mylivenessprobe
+  labels:
+    test: liveness
+spec:
+  containers:
+    - name: lives
+      image: ubuntu
+      args:
+        - /bin/bash
+        - -c
+        - touch /tmp/healthy; sleep 1000    #second value (sleep)
+
+      livenessProbe:                           #define the health check
+        exec:
+          command:            #command to run periodically                        
+            - cat
+            - /tmp/healthy    #(file will same the which one you created that)
+        initialDelaySeconds: 5   #wait for the specified time before it runs the first probe
+        periodSeconds: 5          #(it will verify in every 5 minst/ run the above command every 5 sec)
+        timeoutSeconds: 30        #(if not receive any output in 30 second delete the cont. and recreate)
+
+  :wq
+
+  #kubectl apply -f liveness.yml
+#kubectl get pod mylivenessprobe
+#kubectl describe pod mylivenessprobe
+#kubectl exec <pod_name> -it -- /bin/bash
+#cat /tmp/healthy
+#echo $?   #(will show 0 value mins status is healty (non 0 it mins unhealty)
+#cat /tmp/Kshama   #( this file is not created will show error)
+#ls /tmp/healty
+#rm /tmp/healty   #(delete the created file that we created in menifest)
+#cat /tmp/healthy  
+#ls /tmp/healty
+#echo $?   #will show non 0 value (it mins 
+#kubectl describe pods <pod_name>
+# will show liveness failed
+
