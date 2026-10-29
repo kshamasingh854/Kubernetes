@@ -1,0 +1,25 @@
+
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-limit-range
+spec:
+  limits:
+    - type: Container
+      default:
+        cpu: "1"
+      defaultRequest:
+        cpu: "500m"
+
+:wq
+
+kubectl apply -f limitrange.yml
+kubectl get limitrange
+kubectl describe limitrange cpu-limit-range
+
+
+- kind: LimitRange — Sets default resource values and resource constraints for containers in a namespace.- default.cpu: "1" — Sets the default CPU limit to 1 CPU core (1000 millicores).
+- defaultRequest.cpu: "500m" — Sets the default CPU request to 500 millicores (0.5 CPU core).
+- type: Container — Applies these defaults to containers.
+If a container doesn't specify CPU requests or limits, Kubernetes can apply these defaults automatically.
+Important: A LimitRange applies within a namespace.
