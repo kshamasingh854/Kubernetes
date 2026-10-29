@@ -1,0 +1,28 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-service
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+      # nodePort: 30080  # Optional: must be in the allowed range
+  selector:
+    name: kshama-singh
+:wq
+
+
+#kubectl apply -f service.yml
+#kubectl get svc
+#kubectl get pods
+*Now for access using node port form host
+Need to install curl in pod
+#kubectl exec <pod_name> -it -- /bin/bash
+#apt-get update
+#apt-get install curl -y
+now access
+#kubectl exec <pod_name> -- curl <Node_IP>:80
+will show nginx html file
+  
