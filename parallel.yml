@@ -4,8 +4,8 @@ kind: Job
 metadata:
   name: testpod
 spec:
-  parallelism: 5
-  activeDeadlineSeconds: 10
+  parallelism: 5  #craeat and run pods in paralleli
+  activeDeadlineSeconds: 10      #timeout after 10 sec (delete kr dega)
   template:
     metadata:
       labels:
@@ -24,6 +24,7 @@ kubectl get pods
 kubectl describe job testpod
 kubectl get job testpod -o wide
 
-* Job = run tasks to completion; Deployment = keep applications running.
+*USING JOB WE CAN DO PERLALY CREATE POD AND DELETE:-
+*Job = run tasks to completion; Deployment = keep applications running.
 
 
