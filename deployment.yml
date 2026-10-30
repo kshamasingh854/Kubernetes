@@ -34,3 +34,19 @@ spec:
 #kubectl get pods
 #kubectl describe deployment mydp
 #kubectl delete -f deployment.yml
+#kubectl get rs  (replicaset)
+#kubectl exec <pod_name> -it -- /bin/bash
+#cd /tmp
+ls #cd Kshama (will show that file when you create mounted time)
+#echo "hello this is my volumeMount file"> mount
+#ls #exit
+#kubectl delete pods <pod_name>
+#kubectl get pods
+#kubectl exec <pod_name> -it -- /bin/bash
+#cd /tmp
+ls #cd kshama
+
+ls (will show that file (mount file)
+#exit
+#kubectl delete -f deploy.yml
+#kubectl delete evc.yml
