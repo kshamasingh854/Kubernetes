@@ -1,0 +1,50 @@
+
+*Horizontal Pod Autoscaler:--
+
+*Kubernetes has the possibility to automatically scale pods based on observed CPU utilization which is horizontal pod Autoscaling (HPA).
+*Scaling can be done only for scalable object like controller, deployment or Replica Set.
+
+*HPA is implemented as a Kubernetes API resources and a controller.
+*The controller periodically adjust the number of replicas in a replication controller or deployment to match the observed average CPU utilization to the target specified by user.
+
+*The HPA is implemented as a controller loop with a period controlled by the controller manager-horizontal-pod-autoscaler-sync-period flag (Default volume of 30 Sec)
+*During each period, the controller manager the metrics the resources utilization against the metrics specified in each horizontal pod-Autoscaler definition.
+*For per-Pod resource metrics (like CPU) the controller fetches the metrics from the resources metrics API for each pod targeted by the HorizontalPodAutoscaler.
+
+*The if a target utilization value is set the controller calculates the utilization value as a percentage of the Eauivalent resorce request on the containers in each pod.
+*If a target row-value is set, the raw metric values are used directly The controller then takes the mean of the utilization on the raw value across all targeted Pods, and produces a ration used to scaler the number of desired replicas
+*cooldown period to wait before another downscale opration can be performed is controller by --horizontal-pod-autoscaler-downtime-statilization flag (Default value of 5 min)
+
+*metric server needs to be deployed in the cluster to provide ,etrics via the resources metrics API.
+- --kubelet-insecure-HS
+kubelet autosacle deployment mydeploy --cpu-percent=20 --min=1 --max=10
+
+
+#wget -o metricsserver.yml https://github.com/kuebelets-sigs/metrics-server/release/latest/download/components.yaml
+#ls metricserver.yml
+#https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+#kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+#kubectl get pods -n kube-system | grep metrics
+# (no output → means nothing installed)
+#ls
+#vim contaisomethinh
+add bottom lines
+
+vim metricserver.yml
+/kind:Deployment
+spec
+ containers
+-args
+- --secure-port=443
+add one line here
+(- --kubelet-insecure-tls)  (that define use this server as API HPA)
+
+:wq
+
+kubectl apply -f metricserver.yml
+#kubectl get pods
+#kubectl get ;namespace
+#kubectl get pods -n kube-system 
+#kubectl logs -f matrics-server-779-----(matricserver name will show in namespace) -n kube-system <namespace>
+
+
