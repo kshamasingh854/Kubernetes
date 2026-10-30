@@ -29,3 +29,10 @@ kubectl apply -f shared_volume.yml
 kubectl get pods
 kubectl describe pods <pod_name
 kubectl logs -f pod/i
+
+*INIT (INITIALIGING) CONTAINERS:---
+Init containers are specialized containers that run before containers in a Pod
+
+*Init containers always run to completion.
+*If a Pod's init containers fails Kubernetes repeatendly restarts the pod until the init containers succeeds.
+*Init containers do not support reduseness probe.
