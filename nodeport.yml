@@ -26,3 +26,6 @@ now access
 #kubectl exec <pod_name> -- curl <Node_IP>:80
 will show nginx html file
   
+
+* Pod to Pod communication on same working nodes happens through pod Ip.
+*By default ip will not be accessble outside the node.
