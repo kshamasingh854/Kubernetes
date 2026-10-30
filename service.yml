@@ -25,3 +25,7 @@ spec:
 #kubectl delete svc <serice_name>
 #kubectl delete -f service.yml
 #kubectl get pods
+
+*CLUSTER IP:--
+*Exposes VIP only reachable from within the cluster.
+*Mainly used to communicate between components of Microserivices.
