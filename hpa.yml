@@ -35,3 +35,21 @@ kubectl get resourcequota
 kubectl get hpa
 kubectl get pods -w (live pod)
 kubectl get limitrange
+
+
+*(create new machine on same ip dublicate session of putty)
+run on second session
+
+kubectl get all
+kubectl exec <pod_name> -it -- /bin/bash
+
+*(now run on perivious terminal)
+kubectl get all (will show live
+
+*run on dublicate sessiion--
+apt-get update
+apt-get update
+
+(will show live scenario automated create pod and delete pod)
+
+
