@@ -1,0 +1,47 @@
+* Configmap are useful for storing and sharing non-sensitive, unecrypted configuration information use secret otherwise.
+*  Configmap can be accessed in following was:--
+1) As environment variables
+2) As volume in the Pod
+
+*Kubectl create configmap <mapname> --from-file= <file to read>
+
+#vim sample.conf
+this is empty configmap file accessebale for all application
+
+:wq
+
+ kubectl create configmap mymap --from-file=sample.conf
+ kubectl get configmap
+ kubectl describe configmap mymap
+
+ # vim deplo.config
+apiVersion: v1
+kind: Pod
+metadata:
+   name: myconfimap
+spec:
+  containers:
+    - name: c1
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo kshama-singh; sleep 5; done"]
+      volumeMounts:
+         - name: testconfigmap
+           mountPath: "/tmp/config"  # the config files will be mounted as readOnly by default here
+
+  volumes:
+    - name: testconfigmap
+      configMap:
+         name: mymap   #this should match the config map name created in the first step
+         items:
+           - key: sample.conf
+             path: sample.conf
+:wq
+
+
+# kubectl apply -f deplo.config
+# kubectl get pods
+#kubectl exec myconfimap -it -- /bin/bash
+#cd /tmp/config
+ls sample.conf (will show that file
+
+*this is accessible using volume
